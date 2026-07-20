@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-paper text-ink antialiased;
+  background-image: radial-gradient(rgba(19, 27, 23, 0.05) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+::selection {
+  background: #178a5b;
+  color: #f4f6f1;
+}
+
+/* ---- scroll reveal ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.21, 0.6, 0.35, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .animate-marquee,
+  .animate-floaty,
+  .animate-blink {
+    animation: none !important;
+  }
+}
+
+/* mono route eyebrow */
+.route-chip {
+  @apply inline-flex items-center gap-2 font-mono text-xs tracking-wide text-moss;
+}
+.route-chip .verb {
+  @apply rounded-md bg-ink px-2 py-0.5 text-[11px] font-semibold text-paper;
+}
+
+/* keyboard focus */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #178a5b;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
