@@ -25,7 +25,7 @@ export default function ContactPage() {
         Project enquiry, payment query or refund request — write to me and I will reply {business.responseTime}.
       </p>
 
-      <div className="mt-10 grid gap-4 sm:grid-cols-2">
+      <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
         {cards.map((c) => (
           <div key={c.label} className="rounded-2xl border border-mist bg-card p-6">
             <p className="font-mono text-xs uppercase tracking-widest text-moss">{c.label}</p>

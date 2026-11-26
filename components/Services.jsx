@@ -18,7 +18,7 @@ export function Services() {
         </p>
       </Reveal>
 
-      <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
         {services.map((s) => {
           const now = amountFor(s);
           return (
@@ -33,7 +33,7 @@ export function Services() {
                     most booked
                   </span>
                 )}
-                <h3 className="pr-24 font-display text-xl font-semibold leading-snug">{s.title}</h3>
+                <h3 className={`font-display text-xl font-semibold leading-snug ${s.popular ? "pr-24" : ""}`}>{s.title}</h3>
                 <p className="mt-1.5 text-sm text-moss">{s.tagline}</p>
 
                 <p className="mt-6 flex items-baseline gap-2">

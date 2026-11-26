@@ -7,7 +7,7 @@ export function Contact() {
     <section id="contact" className="mx-auto max-w-6xl scroll-mt-28 px-4 py-24 sm:px-6">
       <Reveal>
         <div className="overflow-hidden rounded-3xl border border-mist bg-card">
-          <div className="grid lg:grid-cols-[1.2fr_0.8fr]">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr]">
             <div className="p-8 sm:p-12">
               <p className="route-chip mb-4">
                 <span className="verb !bg-coral">POST</span> /contact
@@ -18,16 +18,16 @@ export function Contact() {
               <p className="mt-5 max-w-lg text-lg text-moss">
                 I&apos;m open to full-time roles and serious freelance projects — especially LMS, e-commerce, booking and real-time systems.
               </p>
-              <div className="mt-8 flex flex-wrap gap-3">
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <a
                   href={`mailto:${profile.email}`}
-                  className="rounded-xl bg-ink px-6 py-3.5 font-medium text-paper transition hover:-translate-y-0.5 hover:bg-nodeDeep hover:shadow-lift"
+                  className="rounded-xl bg-ink px-6 py-3.5 text-center font-medium text-paper transition hover:-translate-y-0.5 hover:bg-nodeDeep hover:shadow-lift"
                 >
                   Send an email
                 </a>
                 <a
                   href={`tel:${profile.phone.replace(/\s/g, "")}`}
-                  className="rounded-xl border border-ink/15 bg-paper px-6 py-3.5 font-medium transition hover:-translate-y-0.5 hover:border-ink/30 hover:shadow-lift"
+                  className="rounded-xl border border-ink/15 bg-paper px-6 py-3.5 text-center font-medium transition hover:-translate-y-0.5 hover:border-ink/30 hover:shadow-lift"
                 >
                   {profile.phone}
                 </a>

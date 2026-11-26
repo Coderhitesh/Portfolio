@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { services, payment, profile, formatINR, amountFor } from "./data";
@@ -33,6 +33,12 @@ export default function PayForm() {
   const [status, setStatus] = useState("idle"); // idle | loading | success
   const [error, setError] = useState("");
   const [receipt, setReceipt] = useState(null);
+  const errorRef = useRef(null);
+
+  // on phones the error sits far below the fields — bring it into view
+  useEffect(() => {
+    if (error) errorRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+  }, [error]);
 
   const isCustom = serviceId === "custom";
   const service = isCustom ? null : services.find((s) => s.id === serviceId);
@@ -131,12 +137,12 @@ export default function PayForm() {
   }
 
   return (
-    <form onSubmit={handlePay} className="grid gap-8 lg:grid-cols-[1.25fr_0.75fr]" noValidate>
+    <form onSubmit={handlePay} className="grid grid-cols-1 gap-8 lg:grid-cols-[1.25fr_0.75fr]" noValidate>
       <div className="space-y-6">
         {/* step 1 */}
         <section className="rounded-2xl border border-mist bg-card p-6 sm:p-8">
           <p className="font-mono text-xs uppercase tracking-widest text-moss">1 · What are you paying for?</p>
-          <div className="mt-5 grid gap-3 sm:grid-cols-2">
+          <div className="mt-5 grid grid-cols-1 gap-3 min-[480px]:grid-cols-2">
             {[...services, { id: "custom", title: "Custom amount", tagline: "Pay an agreed quote or invoice" }].map((s) => {
               const active = s.id === serviceId;
               return (
@@ -201,7 +207,7 @@ export default function PayForm() {
         {/* step 2 */}
         <section className="rounded-2xl border border-mist bg-card p-6 sm:p-8">
           <p className="font-mono text-xs uppercase tracking-widest text-moss">2 · Your details</p>
-          <div className="mt-5 grid gap-4 sm:grid-cols-2">
+          <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
               <label htmlFor="name" className={labelCls}>Full name</label>
               <input id="name" autoComplete="name" value={form.name} onChange={set("name")} className={inputCls} placeholder="Your name" />
@@ -254,7 +260,7 @@ export default function PayForm() {
           </label>
 
           {error && (
-            <p role="alert" className="mt-5 rounded-xl border border-coral/40 bg-coral/10 px-4 py-3 text-sm text-[#FFB4AB]">
+            <p ref={errorRef} role="alert" className="mt-5 rounded-xl border border-coral/40 bg-coral/10 px-4 py-3 text-sm text-[#FFB4AB]">
               {error}
             </p>
           )}

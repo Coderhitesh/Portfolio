@@ -46,7 +46,7 @@ export default function Hero() {
 
   return (
     <section id="top" className="relative overflow-hidden pb-20 pt-32 sm:pt-40">
-      <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8">
+      <div className="mx-auto grid grid-cols-1 max-w-6xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8">
         {/* left — headline */}
         <div>
           <p className="route-chip mb-6">
@@ -56,7 +56,7 @@ export default function Hero() {
             </span>
           </p>
 
-          <h1 className="font-display text-5xl font-bold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl">
+          <h1 className="font-display text-4xl font-bold leading-[1.05] tracking-tight min-[400px]:text-5xl sm:text-6xl lg:text-7xl">
             APIs that hold.
             <br />
             <span className="text-node">Payments that clear.</span>
@@ -68,22 +68,22 @@ export default function Hero() {
             {profile.summary}
           </p>
 
-          <div className="mt-9 flex flex-wrap items-center gap-3">
+          <div className="mt-9 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:items-center">
             <a
               href="#projects"
-              className="rounded-xl bg-ink px-6 py-3.5 font-medium text-paper transition hover:-translate-y-0.5 hover:bg-nodeDeep hover:shadow-lift"
+              className="rounded-xl bg-ink px-5 py-3.5 text-center font-medium text-paper transition hover:-translate-y-0.5 hover:bg-nodeDeep hover:shadow-lift"
             >
               See the work
             </a>
             <a
               href="#services"
-              className="rounded-xl bg-node px-6 py-3.5 font-medium text-white transition hover:-translate-y-0.5 hover:bg-nodeDeep hover:shadow-lift"
+              className="rounded-xl bg-node px-5 py-3.5 text-center font-medium text-white transition hover:-translate-y-0.5 hover:bg-nodeDeep hover:shadow-lift"
             >
               Services &amp; pricing
             </a>
             <a
               href={`mailto:${profile.email}`}
-              className="rounded-xl border border-ink/15 bg-card px-6 py-3.5 font-medium transition hover:-translate-y-0.5 hover:border-ink/30 hover:shadow-lift"
+              className="col-span-2 rounded-xl border border-ink/15 bg-card px-5 py-3.5 text-center font-medium transition hover:-translate-y-0.5 hover:border-ink/30 hover:shadow-lift sm:col-auto"
             >
               {profile.email}
             </a>

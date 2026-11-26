@@ -28,7 +28,7 @@ export function About() {
         </h2>
       </Reveal>
 
-      <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-mist bg-mist sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-mist bg-mist sm:grid-cols-2 lg:grid-cols-4">
         {stats.map((s, i) => (
           <Reveal key={s.label} delay={Math.min(i, 3)} className="bg-card p-8 transition hover:bg-paper">
             <p className="font-display text-5xl font-bold text-node">{s.value}</p>
@@ -37,7 +37,7 @@ export function About() {
         ))}
       </div>
 
-      <Reveal className="mt-6 grid gap-6 lg:grid-cols-2">
+      <Reveal className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
         <div className="rounded-2xl border border-mist bg-card p-7">
           <p className="font-mono text-xs uppercase tracking-widest text-moss">Education</p>
           <p className="mt-3 font-display text-lg font-semibold">{education.degree}</p>
@@ -75,7 +75,7 @@ export function Stack() {
         <div className="mt-12 space-y-4">
           {stack.map((group, i) => (
             <Reveal key={group.layer}>
-              <div className="group grid items-start gap-4 rounded-2xl border border-mist bg-paper p-6 transition hover:border-node/40 hover:shadow-lift sm:grid-cols-[200px_1fr] sm:p-7">
+              <div className="group grid grid-cols-1 items-start gap-4 rounded-2xl border border-mist bg-paper p-6 transition hover:border-node/40 hover:shadow-lift sm:grid-cols-[200px_1fr] sm:p-7">
                 <div>
                   <p className="font-mono text-xs text-moss">layer {i + 1}/5</p>
                   <h3 className="mt-1 font-display text-xl font-semibold">{group.layer}</h3>

@@ -16,7 +16,7 @@ export function Experience() {
       <div className="mt-12 space-y-0">
         {experience.map((job, i) => (
           <Reveal key={job.company}>
-            <article className="relative grid gap-4 border-l-2 border-mist py-8 pl-8 sm:grid-cols-[220px_1fr] sm:gap-8 lg:grid-cols-[280px_1fr]">
+            <article className="relative grid grid-cols-1 gap-4 border-l-2 border-mist py-8 pl-8 sm:grid-cols-[220px_1fr] sm:gap-8 lg:grid-cols-[280px_1fr]">
               <span
                 className={`absolute -left-[7px] top-10 h-3 w-3 rounded-full border-2 border-paper ${
                   job.current ? "bg-node ring-4 ring-node/20" : "bg-moss"
@@ -66,19 +66,19 @@ export function Projects() {
           </p>
         </Reveal>
 
-        <div className="mt-12 grid gap-5 md:grid-cols-2">
+        <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2">
           {projects.map((p, i) => (
             <Reveal key={p.name} className={i === 0 ? "md:col-span-2" : ""}>
               <a
                 href={p.url}
                 target="_blank"
                 rel="noreferrer"
-                className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-7 transition hover:-translate-y-1 hover:border-node/50 hover:bg-white/[0.07] sm:p-8"
+                className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-5 transition hover:-translate-y-1 hover:border-node/50 hover:bg-white/[0.07] sm:p-8"
               >
                 <div className="flex items-start justify-between gap-4">
-                  <div>
+                  <div className="min-w-0">
                     <p className="font-mono text-xs text-white/40">{p.id} · {p.highlight}</p>
-                    <h3 className="mt-2 font-display text-2xl font-semibold transition group-hover:text-node sm:text-3xl">
+                    <h3 className="mt-2 break-words font-display text-xl font-semibold transition group-hover:text-node min-[400px]:text-2xl sm:text-3xl">
                       {p.name}
                     </h3>
                     <p className="mt-1 text-sm text-white/55">{p.tagline}</p>
