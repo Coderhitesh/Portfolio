@@ -76,6 +76,12 @@ export default function Hero() {
               See the work
             </a>
             <a
+              href="#services"
+              className="rounded-xl bg-node px-6 py-3.5 font-medium text-white transition hover:-translate-y-0.5 hover:bg-nodeDeep hover:shadow-lift"
+            >
+              Services &amp; pricing
+            </a>
+            <a
               href={`mailto:${profile.email}`}
               className="rounded-xl border border-ink/15 bg-card px-6 py-3.5 font-medium transition hover:-translate-y-0.5 hover:border-ink/30 hover:shadow-lift"
             >

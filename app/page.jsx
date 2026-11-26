@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import { Marquee, About, Stack } from "@/components/Sections";
 import { Experience, Projects } from "@/components/Work";
+import { Services } from "@/components/Services";
 import { Contact, Footer } from "@/components/Contact";
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
       <Stack />
       <Experience />
       <Projects />
+      <Services />
       <Contact />
       <Footer />
     </main>

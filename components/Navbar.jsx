@@ -1,14 +1,16 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { profile } from "./data";
 
 const links = [
-  { href: "#about", label: "/about" },
-  { href: "#stack", label: "/stack" },
-  { href: "#experience", label: "/experience" },
-  { href: "#projects", label: "/projects" },
-  { href: "#contact", label: "/contact" },
+  { href: "/#about", label: "/about" },
+  { href: "/#stack", label: "/stack" },
+  { href: "/#experience", label: "/experience" },
+  { href: "/#projects", label: "/projects" },
+  { href: "/#services", label: "/services" },
+  { href: "/#contact", label: "/contact" },
 ];
 
 export default function Navbar() {
@@ -35,36 +37,42 @@ export default function Navbar() {
             : "mx-4 border-transparent bg-transparent sm:mx-auto"
         }`}
       >
-        <a href="#top" className="flex items-center gap-2.5">
+        <Link href="/" className="flex items-center gap-2.5">
           <span className="grid h-8 w-8 place-items-center rounded-lg bg-ink font-mono text-sm font-semibold text-paper">
             HY
           </span>
-          <span className="hidden font-mono text-xs text-moss sm:block">
+          <span className="hidden font-mono text-xs text-moss xl:block">
             ~/hitesh-yadav <span className="text-node">●</span> live
           </span>
-        </a>
+        </Link>
 
-        <div className="hidden items-center gap-1 md:flex">
+        <div className="hidden items-center gap-1 lg:flex">
           {links.map((l) => (
-            <a
+            <Link
               key={l.href}
               href={l.href}
               className="rounded-lg px-3 py-1.5 font-mono text-[13px] text-moss transition hover:bg-ink/5 hover:text-ink"
             >
               {l.label}
-            </a>
+            </Link>
           ))}
           <a
             href={`mailto:${profile.email}`}
-            className="ml-2 rounded-lg bg-ink px-4 py-2 font-mono text-[13px] font-medium text-paper transition hover:bg-nodeDeep"
+            className="ml-2 rounded-lg border border-ink/15 px-4 py-2 font-mono text-[13px] font-medium transition hover:border-ink/30"
           >
             POST /hire-me
           </a>
+          <Link
+            href="/pay"
+            className="rounded-lg bg-node px-4 py-2 font-mono text-[13px] font-medium text-white transition hover:bg-nodeDeep"
+          >
+            Pay now
+          </Link>
         </div>
 
         <button
           onClick={() => setOpen(!open)}
-          className="rounded-lg p-2 hover:bg-ink/5 md:hidden"
+          className="rounded-lg p-2 hover:bg-ink/5 lg:hidden"
           aria-label="Toggle menu"
           aria-expanded={open}
         >
@@ -79,17 +87,24 @@ export default function Navbar() {
       </nav>
 
       {open && (
-        <div className="mx-4 mt-2 rounded-2xl border border-mist bg-paper/95 p-3 shadow-lift backdrop-blur-md md:hidden">
+        <div className="mx-4 mt-2 rounded-2xl border border-mist bg-paper/95 p-3 shadow-lift backdrop-blur-md lg:hidden">
           {links.map((l) => (
-            <a
+            <Link
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
               className="block rounded-lg px-3 py-2.5 font-mono text-sm text-moss hover:bg-ink/5 hover:text-ink"
             >
               {l.label}
-            </a>
+            </Link>
           ))}
+          <Link
+            href="/pay"
+            onClick={() => setOpen(false)}
+            className="mt-2 block rounded-lg bg-node px-3 py-2.5 text-center font-mono text-sm font-medium text-white"
+          >
+            Pay now
+          </Link>
           <a
             href={`mailto:${profile.email}`}
             onClick={() => setOpen(false)}

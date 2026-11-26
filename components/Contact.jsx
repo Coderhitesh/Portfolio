@@ -1,5 +1,6 @@
 import Reveal from "./Reveal";
-import { profile } from "./data";
+import Link from "next/link";
+import { profile, legalLinks } from "./data";
 
 export function Contact() {
   return (
@@ -67,11 +68,23 @@ export function Contact() {
 export function Footer() {
   return (
     <footer className="border-t border-mist py-8">
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 font-mono text-xs text-moss sm:flex-row sm:px-6">
-        <p>© {new Date().getFullYear()} Hitesh Yadav · Delhi, India</p>
-        <p>
-          status: <span className="text-node">200 OK</span> · built with Next.js & Tailwind
-        </p>
+      <div className="mx-auto max-w-6xl px-4 font-mono text-xs text-moss sm:px-6">
+        <nav aria-label="Legal" className="flex flex-wrap justify-center gap-x-5 gap-y-2 sm:justify-start">
+          {legalLinks.map((l) => (
+            <Link key={l.href} href={l.href} className="transition hover:text-ink">
+              {l.label}
+            </Link>
+          ))}
+          <Link href="/pay" className="text-node transition hover:text-nodeDeep">
+            Pay online
+          </Link>
+        </nav>
+        <div className="mt-5 flex flex-col items-center justify-between gap-3 sm:flex-row">
+          <p>© {new Date().getFullYear()} Hitesh Yadav · Delhi, India</p>
+          <p>
+            payments by Razorpay · status: <span className="text-node">200 OK</span> · built with Next.js &amp; Tailwind
+          </p>
+        </div>
       </div>
     </footer>
   );

@@ -154,3 +154,106 @@ export const marqueeItems = [
   "OAuth · JWT",
   "LMS · E-commerce · Booking",
 ];
+
+/* ------------------------------------------------------------------
+   Business, payments & services
+   EDIT THE PRICES / TEXT BELOW to match what you actually charge.
+   Server (Razorpay order API) and UI both read from here, so amounts
+   can never be tampered with from the browser.
+------------------------------------------------------------------- */
+export const business = {
+  name: "Hitesh Yadav",
+  kind: "Freelance web developer (individual / sole proprietor)",
+  address: "Delhi, India", // TODO: add your full postal address (Razorpay asks for it)
+  hours: "Mon – Sat, 10:00 AM – 7:00 PM IST",
+  responseTime: "within 24 hours",
+};
+
+export const payment = {
+  gateway: "Razorpay",
+  currency: "INR",
+  minCustom: 100,
+  maxCustom: 500000,
+  refundWindowHours: 48,
+  refundProcessing: "5–7 business days",
+};
+
+export const legalLinks = [
+  { href: "/privacy-policy", label: "Privacy Policy" },
+  { href: "/terms-and-conditions", label: "Terms & Conditions" },
+  { href: "/refund-policy", label: "Cancellation & Refund" },
+  { href: "/shipping-policy", label: "Shipping & Delivery" },
+  { href: "/contact-us", label: "Contact Us" },
+];
+
+// price = starting price in INR · advancePercent = share payable up-front (100 = pay in full)
+export const services = [
+  {
+    id: "landing",
+    title: "Landing Page / Portfolio",
+    tagline: "A fast, polished one-pager that converts.",
+    price: 12000,
+    unit: "one-time",
+    advancePercent: 50,
+    delivery: "3–5 working days",
+    features: ["Next.js / React + Tailwind", "Fully responsive", "Contact form & SEO basics", "Deployment on your domain"],
+  },
+  {
+    id: "business",
+    title: "Business Website",
+    tagline: "Multi-page site with an admin panel you control.",
+    price: 30000,
+    unit: "one-time",
+    advancePercent: 50,
+    delivery: "1–2 weeks",
+    features: ["Up to 8 pages + CMS / admin", "SEO structure & analytics", "Policy pages & forms", "1 month free support"],
+  },
+  {
+    id: "ecommerce",
+    title: "E-commerce Store",
+    tagline: "Sell online with real payments and order tracking.",
+    price: 75000,
+    unit: "one-time",
+    advancePercent: 50,
+    delivery: "3–5 weeks",
+    popular: true,
+    features: ["Catalogue, cart & checkout", "Razorpay / PhonePe / Stripe", "Order tracking & admin dashboard", "AWS S3 / Cloudinary media"],
+  },
+  {
+    id: "webapp",
+    title: "LMS / Booking / Custom Web App",
+    tagline: "Role-based platforms built to handle real traffic.",
+    price: 150000,
+    unit: "one-time",
+    advancePercent: 40,
+    delivery: "6–10 weeks",
+    features: ["Auth, roles & dashboards", "Payments, webhooks, real-time", "Video / test series / bookings", "Docker + Nginx + PM2 deploy"],
+  },
+  {
+    id: "gateway",
+    title: "Payment Gateway Integration",
+    tagline: "Razorpay, Stripe or PhonePe added to your existing site.",
+    price: 8000,
+    unit: "one-time",
+    advancePercent: 100,
+    delivery: "1–3 working days",
+    features: ["Order + signature verification", "Webhook handling", "Refund & failure flows", "Test-mode to live go-live help"],
+  },
+  {
+    id: "support",
+    title: "Monthly Maintenance",
+    tagline: "Keep your site updated, fast and online.",
+    price: 5000,
+    unit: "per month",
+    advancePercent: 100,
+    delivery: "Starts within 24 hours",
+    features: ["Bug fixes & small changes", "Uptime & performance checks", "Backups & security updates", "Priority support"],
+  },
+];
+
+export const formatINR = (n) => "₹" + new Intl.NumberFormat("en-IN").format(n);
+
+export function amountFor(service, mode = "advance") {
+  if (mode === "full" || service.advancePercent >= 100) return service.price;
+  return Math.round((service.price * service.advancePercent) / 100);
+}
